@@ -3,6 +3,7 @@
   "displayName": "ROOT File Viewer",
   "description": "View ROOT files directly in VS Code!",
   "version": "0.0.1",
+  "publisher": "albertopdrf",
   "engines": {
     "vscode": "^1.53.0"
   },
@@ -50,5 +51,13 @@
   },
   "dependencies": {
     "jsroot": "^6.0.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/albertopdrf/root-file-viewer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albertopdrf/root-file-viewer.git"
+  },
+  "homepage": "https://github.com/AlbertoPdRF/root-file-viewer#readme"
 }

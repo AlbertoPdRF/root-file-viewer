@@ -69,8 +69,12 @@ export class RootFileEditorProvider
   ): Promise<void> {
     this.webviews.add(document.uri, webviewPanel);
 
+    const documentRoot = document.uri.with({
+      path: document.uri.path.replace(/\/[^\/]+?\.\w+$/, '/'),
+    });
     webviewPanel.webview.options = {
       enableScripts: true,
+      localResourceRoots: [this._context.extensionUri, documentRoot],
     };
 
     webviewPanel.webview.html = this.getHtmlForWebview(

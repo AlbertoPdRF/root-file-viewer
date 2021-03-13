@@ -7,9 +7,15 @@
   "engines": {
     "vscode": "^1.53.0"
   },
+  "license": "MIT",
   "categories": [
-    "Other"
+    "Visualization"
   ],
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#346295",
+    "theme": "light"
+  },
   "activationEvents": [
     "onCustomEditor:rootFileViewer.rootFile"
   ],

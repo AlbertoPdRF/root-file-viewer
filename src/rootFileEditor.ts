@@ -116,6 +116,10 @@ export class RootFileEditorProvider
 
     const backgroundColor = new vscode.ThemeColor('background');
 
+    const configuration = vscode.workspace.getConfiguration('rootFileViewer');
+    const palette = configuration.get('palette');
+    const layout = configuration.get('layout');
+
     return /* html */ `
       <!DOCTYPE html>
       <html lang="en">
@@ -139,9 +143,11 @@ export class RootFileEditorProvider
         </div>
 
         <script>
-          JSROOT.require('hierarchy').then(() => {
+          JSROOT.settings.Palette = ${palette};
+
+          JSROOT.require("hierarchy").then(() => {
             const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy", "tree", "${backgroundColor}");
-            h.setDisplay("tabs", "display");
+            h.setDisplay("${layout}", "display");
             h.openRootFile("${fileUri}");
           });
         </script>

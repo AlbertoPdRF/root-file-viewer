@@ -32,7 +32,28 @@
         ],
         "priority": "default"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "ROOT File Viewer",
+      "properties": {
+        "rootFileViewer.layout": {
+          "type": "string",
+          "default": "tabs",
+          "enum": [
+            "flex",
+            "tabs"
+          ],
+          "markdownDescription": "Layout in which to arrange plots."
+        },
+        "rootFileViewer.palette": {
+          "type": "integer",
+          "minimum": 51,
+          "maximum": 113,
+          "default": 57,
+          "markdownDescription": "Color palette to be used for plots. All options from [ROOT's `TColor` Class Reference](https://root.cern/doc/master/classTColor.html#C06) are supported."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",

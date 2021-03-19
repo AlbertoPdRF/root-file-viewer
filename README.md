@@ -18,3 +18,12 @@ Installing the extension is as easy as:
 And that's it, now you can view your ROOT Files directly in VS Code! 🎉
 
 You can also install the extension with any of the other [options supported by VS Code](https://code.visualstudio.com/docs/editor/extension-gallery)
+
+## Development
+
+To build and run the extension locally, follow these steps:
+
+1. Clone the repo with `git clone git@github.com:AlbertoPdRF/root-file-viewer.git` (or `git clone https://github.com/AlbertoPdRF/root-file-viewer.git`)
+2. Move into just created folder folder with `cd root-file-viewer`
+3. Install the dependencies with `yarn`
+4. Run the extension pressing `F5`

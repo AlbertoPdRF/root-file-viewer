@@ -14,7 +14,7 @@
   "icon": "icon.png",
   "galleryBanner": {
     "color": "#346295",
-    "theme": "light"
+    "theme": "dark"
   },
   "activationEvents": [
     "onCustomEditor:rootFileViewer.rootFile"

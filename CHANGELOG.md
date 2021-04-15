@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Upgraded `JSROOT` to `v6.1.0`. Among [all changes](https://github.com/root-project/jsroot/releases/tag/6.1.0), there are some worth noting:
+  - Rebinning `TH1` histograms is supported now ([#2](https://github.com/AlbertoPdRF/root-file-viewer/issues/2))
+  - Modals are now displayed ([#6](https://github.com/AlbertoPdRF/root-file-viewer/issues/6))
+
 ## [0.2.0] - 2021-03-13
 
 ### Added

@@ -114,8 +114,6 @@ export class RootFileEditorProvider
 
     const fileUri = webview.asWebviewUri(file);
 
-    const backgroundColor = new vscode.ThemeColor('background');
-
     const configuration = vscode.workspace.getConfiguration('rootFileViewer');
     const palette = configuration.get('palette');
     const layout = configuration.get('layout');
@@ -137,18 +135,23 @@ export class RootFileEditorProvider
         <title>ROOT File</title>
       </head>
       <body>
-        <div id="hierarchy">
-          <div id="tree"></div>
-          <div id="display"></div>
-        </div>
+        <div id="hierarchy"></div>
 
         <script>
           JSROOT.settings.Palette = ${palette};
 
           JSROOT.require("hierarchy").then(() => {
-            const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy", "tree", "${backgroundColor}");
-            h.setDisplay("${layout}", "display");
-            h.openRootFile("${fileUri}");
+            const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy");
+            h.no_select = true;
+            h.prepareGuiDiv(d3.select("#hierarchy"), "${layout}");
+            h.createBrowser("browser").then(() => {
+              const titleParagraph = document.querySelector(".jsroot_browser_title");
+              if (titleParagraph) {
+                titleParagraph.remove();
+              }
+
+              h.openRootFile("${fileUri}");
+            });
           });
         </script>
       </body>

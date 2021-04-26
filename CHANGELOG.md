@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-04-26
+
+### Added
+
 - Allow the browser and drawing areas to be resized ([#7](https://github.com/AlbertoPdRF/root-file-viewer/issues/7))
 
 ## [0.3.0] - 2021-04-15

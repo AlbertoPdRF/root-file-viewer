@@ -15,12 +15,6 @@ body {
   background-color: var(--vscode-editor-background)!important;
 }
 
-.jsroot_browser_version {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
 .jsroot_separator {
   background-color: var(--vscode-editor-lineHighlightBorder)!important;
 }

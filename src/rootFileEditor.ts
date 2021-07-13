@@ -143,6 +143,7 @@ export class RootFileEditorProvider
           JSROOT.require("hierarchy").then(() => {
             const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy");
             h.no_select = true;
+            h.show_overflow = true;
             h.prepareGuiDiv(d3.select("#hierarchy"), "${layout}");
             h.createBrowser("browser").then(() => {
               const titleParagraph = document.querySelector(".jsroot_browser_title");

@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.5.0] - 2022-02-15
+
+### Added
+
+- Upgraded `JSROOT` to `v6.3.3`. This includes many changes:
+  - [`v6.1.1 changes](https://github.com/root-project/jsroot/releases/tag/6.1.1)
+  - [`v6.2.0 changes](https://github.com/root-project/jsroot/releases/tag/6.2.0)
+  - [`v6.2.1 changes](https://github.com/root-project/jsroot/releases/tag/6.2.1)
+  - [`v6.2.2 changes](https://github.com/root-project/jsroot/releases/tag/6.2.2)
+  - [`v6.3.0 changes](https://github.com/root-project/jsroot/releases/tag/6.3.0)
+  - [`v6.3.1 changes](https://github.com/root-project/jsroot/releases/tag/6.3.1)
+  - [`v6.3.2 changes](https://github.com/root-project/jsroot/releases/tag/6.3.2)
+  - [`v6.3.3 changes](https://github.com/root-project/jsroot/releases/tag/6.3.3)
+- Minimal visual adjustments
+
 ## [0.4.0] - 2021-04-26
 
 ### Added

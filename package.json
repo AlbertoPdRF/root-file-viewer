@@ -5,7 +5,7 @@
   "version": "0.5.0",
   "publisher": "albertopdrf",
   "engines": {
-    "vscode": "^1.53.0"
+    "vscode": "^1.64.0"
   },
   "license": "MIT",
   "categories": [
@@ -31,6 +31,21 @@
           }
         ],
         "priority": "default"
+      }
+    ],
+    "languages": [
+      {
+        "id": "root",
+        "extensions": [
+          ".root"
+        ],
+        "aliases": [
+          "ROOT"
+        ],
+        "icon": {
+          "light": "./icon.png",
+          "dark": "./icon.png"
+        }
       }
     ],
     "configuration": {

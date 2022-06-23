@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.6.0] - 2022-06-23
+
 ### Added
 
 - Display the ROOT File icon for `.root` files

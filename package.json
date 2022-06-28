@@ -53,10 +53,11 @@
       "properties": {
         "rootFileViewer.layout": {
           "type": "string",
-          "default": "tabs",
+          "default": "flex",
           "enum": [
             "flex",
-            "tabs"
+            "grid2x2",
+            "simple"
           ],
           "markdownDescription": "Layout in which to arrange plots."
         },
@@ -92,7 +93,7 @@
     "vscode-test": "^1.5.0"
   },
   "dependencies": {
-    "jsroot": "^6.0.1"
+    "jsroot": "^7.1.0"
   },
   "bugs": {
     "url": "https://github.com/albertopdrf/root-file-viewer/issues"

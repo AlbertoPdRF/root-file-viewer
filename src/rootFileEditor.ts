@@ -107,8 +107,8 @@ export class RootFileEditorProvider
           this._context.extensionPath,
           "node_modules",
           "jsroot",
-          "scripts",
-          "JSRoot.core.js"
+          "build",
+          "jsroot.js"
         )
       )
     );
@@ -141,19 +141,17 @@ export class RootFileEditorProvider
         <script>
           JSROOT.settings.Palette = ${palette};
 
-          JSROOT.require("hierarchy").then(() => {
-            const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy");
-            h.no_select = true;
-            h.show_overflow = true;
-            h.prepareGuiDiv(d3.select("#hierarchy"), "${layout}");
-            h.createBrowser("browser").then(() => {
-              const titleParagraph = document.querySelector(".jsroot_browser_title");
-              if (titleParagraph) {
-                titleParagraph.remove();
-              }
+          const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy");
+          h.no_select = true;
+          h.show_overflow = true;
+          h.prepareGuiDiv("hierarchy", "${layout}");
+          h.createBrowser("browser").then(() => {
+            const titleParagraph = document.querySelector(".jsroot_browser_title");
+            if (titleParagraph) {
+              titleParagraph.remove();
+            }
 
-              h.openRootFile("${fileUri}");
-            });
+            h.openRootFile("${fileUri}");
           });
         </script>
       </body>

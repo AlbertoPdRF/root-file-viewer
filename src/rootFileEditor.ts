@@ -1,6 +1,6 @@
-import * as path from 'path';
-import * as vscode from 'vscode';
-import { Disposable } from './dispose';
+import * as path from "path";
+import * as vscode from "vscode";
+import { Disposable } from "./dispose";
 
 class RootFileDocument extends Disposable implements vscode.CustomDocument {
   static async create(
@@ -33,7 +33,8 @@ class RootFileDocument extends Disposable implements vscode.CustomDocument {
 }
 
 export class RootFileEditorProvider
-  implements vscode.CustomReadonlyEditorProvider<RootFileDocument> {
+  implements vscode.CustomReadonlyEditorProvider<RootFileDocument>
+{
   public static register(context: vscode.ExtensionContext): vscode.Disposable {
     return vscode.window.registerCustomEditorProvider(
       RootFileEditorProvider.viewType,
@@ -47,7 +48,7 @@ export class RootFileEditorProvider
     );
   }
 
-  private static readonly viewType = 'rootFileViewer.rootFile';
+  private static readonly viewType = "rootFileViewer.rootFile";
 
   private readonly webviews = new WebviewCollection();
 
@@ -70,7 +71,7 @@ export class RootFileEditorProvider
     this.webviews.add(document.uri, webviewPanel);
 
     const documentRoot = document.uri.with({
-      path: document.uri.path.replace(/\/[^\/]+?\.\w+$/, '/'),
+      path: document.uri.path.replace(/\/[^\/]+?\.\w+$/, "/"),
     });
     webviewPanel.webview.options = {
       enableScripts: true,
@@ -86,17 +87,17 @@ export class RootFileEditorProvider
   private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
     const styleResetUri = webview.asWebviewUri(
       vscode.Uri.file(
-        path.join(this._context.extensionPath, 'media', 'reset.css')
+        path.join(this._context.extensionPath, "media", "reset.css")
       )
     );
     const styleVSCodeUri = webview.asWebviewUri(
       vscode.Uri.file(
-        path.join(this._context.extensionPath, 'media', 'vscode.css')
+        path.join(this._context.extensionPath, "media", "vscode.css")
       )
     );
     const styleMainUri = webview.asWebviewUri(
       vscode.Uri.file(
-        path.join(this._context.extensionPath, 'media', 'rootFile.css')
+        path.join(this._context.extensionPath, "media", "rootFile.css")
       )
     );
 
@@ -104,19 +105,19 @@ export class RootFileEditorProvider
       vscode.Uri.file(
         path.join(
           this._context.extensionPath,
-          'node_modules',
-          'jsroot',
-          'scripts',
-          'JSRoot.core.js'
+          "node_modules",
+          "jsroot",
+          "scripts",
+          "JSRoot.core.js"
         )
       )
     );
 
     const fileUri = webview.asWebviewUri(file);
 
-    const configuration = vscode.workspace.getConfiguration('rootFileViewer');
-    const palette = configuration.get('palette');
-    const layout = configuration.get('layout');
+    const configuration = vscode.workspace.getConfiguration("rootFileViewer");
+    const palette = configuration.get("palette");
+    const layout = configuration.get("layout");
 
     return /* html */ `
       <!DOCTYPE html>

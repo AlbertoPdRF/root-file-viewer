@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
 export abstract class Disposable {
   private _isDisposed = false;

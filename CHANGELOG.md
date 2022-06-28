@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-06-28
+
+### Added
+
+- Upgraded `JSROOT` to `v7.1.0`. Relevant changes:
+  - [`v6.3.4` changes](https://github.com/root-project/jsroot/releases/tag/6.3.4)
+  - [`v7.0.0` changes](https://github.com/root-project/jsroot/releases/tag/7.0.0)
+    - This required getting rid of the `tabs` layout, but it will likely come back at some point, see https://github.com/root-project/jsroot/issues/238
+  - [`v7.0.1` changes](https://github.com/root-project/jsroot/releases/tag/7.0.1)
+  - [`v7.0.2` changes](https://github.com/root-project/jsroot/releases/tag/7.0.2)
+  - [`v7.1.0` changes](https://github.com/root-project/jsroot/releases/tag/7.1.0)
+- Added support for `JSROOT`'s dark mode through the extension's settings
+- The code has been [prettified](https://prettier.io/)
+- The extension is now bundled with [Webpack](https://webpack.js.org/)!
+
 ## [0.6.0] - 2022-06-23
 
 ### Added
@@ -17,14 +32,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - Upgraded `JSROOT` to `v6.3.3`. This includes many changes:
-  - [`v6.1.1 changes](https://github.com/root-project/jsroot/releases/tag/6.1.1)
-  - [`v6.2.0 changes](https://github.com/root-project/jsroot/releases/tag/6.2.0)
-  - [`v6.2.1 changes](https://github.com/root-project/jsroot/releases/tag/6.2.1)
-  - [`v6.2.2 changes](https://github.com/root-project/jsroot/releases/tag/6.2.2)
-  - [`v6.3.0 changes](https://github.com/root-project/jsroot/releases/tag/6.3.0)
-  - [`v6.3.1 changes](https://github.com/root-project/jsroot/releases/tag/6.3.1)
-  - [`v6.3.2 changes](https://github.com/root-project/jsroot/releases/tag/6.3.2)
-  - [`v6.3.3 changes](https://github.com/root-project/jsroot/releases/tag/6.3.3)
+  - [`v6.1.1` changes](https://github.com/root-project/jsroot/releases/tag/6.1.1)
+  - [`v6.2.0` changes](https://github.com/root-project/jsroot/releases/tag/6.2.0)
+  - [`v6.2.1` changes](https://github.com/root-project/jsroot/releases/tag/6.2.1)
+  - [`v6.2.2` changes](https://github.com/root-project/jsroot/releases/tag/6.2.2)
+  - [`v6.3.0` changes](https://github.com/root-project/jsroot/releases/tag/6.3.0)
+  - [`v6.3.1` changes](https://github.com/root-project/jsroot/releases/tag/6.3.1)
+  - [`v6.3.2` changes](https://github.com/root-project/jsroot/releases/tag/6.3.2)
+  - [`v6.3.3` changes](https://github.com/root-project/jsroot/releases/tag/6.3.3)
 - Minimal visual adjustments
 
 ## [0.4.0] - 2021-04-26

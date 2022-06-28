@@ -102,8 +102,9 @@ export class RootFileEditorProvider
     const fileUri = webview.asWebviewUri(file);
 
     const configuration = vscode.workspace.getConfiguration("rootFileViewer");
-    const palette = configuration.get("palette");
+    const darkMode = configuration.get("darkMode");
     const layout = configuration.get("layout");
+    const palette = configuration.get("palette");
 
     return /* html */ `
       <!DOCTYPE html>
@@ -125,7 +126,9 @@ export class RootFileEditorProvider
         <div id="hierarchy"></div>
 
         <script>
-          JSROOT.settings.Palette = ${palette};
+          const settings = JSROOT.settings;
+          settings.DarkMode = ${darkMode};
+          settings.Palette = ${palette};
 
           const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy");
           h.no_select = true;

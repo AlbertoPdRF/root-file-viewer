@@ -51,6 +51,11 @@
     "configuration": {
       "title": "ROOT File Viewer",
       "properties": {
+        "rootFileViewer.darkMode": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Enable/disable dark mode."
+        },
         "rootFileViewer.layout": {
           "type": "string",
           "default": "flex",

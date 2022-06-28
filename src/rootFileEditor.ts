@@ -86,31 +86,17 @@ export class RootFileEditorProvider
 
   private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
     const styleResetUri = webview.asWebviewUri(
-      vscode.Uri.file(
-        path.join(this._context.extensionPath, "media", "reset.css")
-      )
+      vscode.Uri.joinPath(this._context.extensionUri, "media", "reset.css")
     );
     const styleVSCodeUri = webview.asWebviewUri(
-      vscode.Uri.file(
-        path.join(this._context.extensionPath, "media", "vscode.css")
-      )
+      vscode.Uri.joinPath(this._context.extensionUri, "media", "vscode.css")
     );
     const styleMainUri = webview.asWebviewUri(
-      vscode.Uri.file(
-        path.join(this._context.extensionPath, "media", "rootFile.css")
-      )
+      vscode.Uri.joinPath(this._context.extensionUri, "media", "rootFile.css")
     );
 
     const jsrootUri = webview.asWebviewUri(
-      vscode.Uri.file(
-        path.join(
-          this._context.extensionPath,
-          "node_modules",
-          "jsroot",
-          "build",
-          "jsroot.js"
-        )
-      )
+      vscode.Uri.joinPath(this._context.extensionUri, "dist", "jsroot.js")
     );
 
     const fileUri = webview.asWebviewUri(file);

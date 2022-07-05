@@ -81,34 +81,53 @@ export class RootFileEditorProvider
       localResourceRoots: [this._context.extensionUri, documentRoot],
     };
 
-    webviewPanel.webview.html = this.getHtmlForWebview(
-      webviewPanel.webview,
-      document.uri
-    );
+    let filesize = 0, filename = "file.root";
 
-    let size = 0;
-
-    // let fs = require('fs');
-    // let fd = fs.openSync(document.uri, 'r');
+    // let btoa = require('btoa');   // this should be "btoa" module
+    // let fs = require('fs');       // this is native "fs" module
+    // let fd = fs.openSync(filename, 'r');
     // if (fd) {
-    // let stats = fs.statSync(document.uri);
-    //  size = stats.size;
+    // let stats = fs.statSync(filename.uri);
+    //  filesize = stats.size;
     // }
 
-    webviewPanel.webview.postMessage({ info: "Say hello size = " + size });
+    webviewPanel.webview.html = this.getHtmlForWebview(
+      webviewPanel.webview,
+      document.uri,
+      filename,
+      filesize
+    );
 
+
+    webviewPanel.webview.postMessage({ info: "Say hello size = " + filesize });
+
+    // handle message inside Code
     webviewPanel.webview.onDidReceiveMessage(
         message => {
           switch (message.command) {
             case 'alert':
-              vscode.window.showErrorMessage(message.text);
-              return;
+               vscode.window.showErrorMessage(message.text);
+               return;
+            case 'read': {
+               let buffer = new ArrayBuffer(message.sz);
+               let view = new DataView(buffer, 0, message.sz);
+               let bytesRead = fs.readSync(fd, view, 0, message.sz, message.pos);
+               let binStr = "";
+               for (let i = 0; i < message.sz; ++i)
+                  binStr += String.fromCharCode(view.getUint8(i));
+               webviewPanel.webview.postMessage({
+                   id: message.id,
+                   data: btoa(binStr)
+                });
+               return;
+            }
+
           }
         }
     );
   }
 
-  private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
+  private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri, filename: string, filesize: Number): string {
     const styleResetUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._context.extensionUri, "media", "reset.css")
     );
@@ -150,6 +169,32 @@ export class RootFileEditorProvider
         <div id="hierarchy"></div>
 
         <script>
+          const vscode = acquireVsCodeApi(),
+                requests = {}; // list of requests
+
+          let id = 0;
+
+          class WebViewProxy extends JSROOT.FileProxy {
+             constructor() {
+               super();
+            }
+
+            getFileName() { return "${filename}"; }
+
+            getFileSize() { return ${filesize}; }
+
+            readBuffer(pos, sz)
+            {
+               return new Promise(resolve => {
+                  requests[++id] = resolve;
+                  vscode.postMessage({
+                     command: 'read',
+                     pos, sz, id
+                  });
+               });
+            }
+          }
+
           const settings = JSROOT.settings;
           settings.DarkMode = ${darkMode};
           settings.Palette = ${palette};
@@ -160,24 +205,40 @@ export class RootFileEditorProvider
           h.prepareGuiDiv("hierarchy", "${layout}");
           h.createBrowser("browser").then(() => {
             const titleParagraph = document.querySelector(".jsroot_browser_title");
-            if (titleParagraph) {
+            if (titleParagraph)
               titleParagraph.remove();
-            }
 
             h.openRootFile("${fileUri}");
+
+            // instead should be h.openRootFile(new WebViewProxy);
           });
 
           // Handle the message inside the webview
           window.addEventListener('message', event => {
             const message = event.data; // The JSON data our extension sent
-            console.log('got message', message?.info);
+            if (message?.read && message?.id) {
+               let resolve = requests[message.id];
+               delete requests[message.id];
+
+               if (resolve) {
+                  let blobStr = atob(message.read); // convert to binary string
+                  let buffer = new ArrayBuffer(blobStr.length);
+                  let view = new DataView(buffer, 0, blobStr.length);
+                  for (let i = 0; i < blobStr.length; ++i)
+                     view.setUint8(i, blobStr.charCodeAt(i));
+                  resolve(view);
+               }
+
+            } else if (message?.info)
+               console.log('got message', message?.info);
           });
 
-          const vscode = acquireVsCodeApi();
           vscode.postMessage({
              command: 'alert',
              text: 'test message for alert command'
           });
+
+
         </script>
       </body>
       </html>`;

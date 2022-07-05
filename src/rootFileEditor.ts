@@ -2,6 +2,9 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { Disposable } from "./dispose";
 
+// import * as fs from "fs";
+
+
 class RootFileDocument extends Disposable implements vscode.CustomDocument {
   static async create(
     uri: vscode.Uri
@@ -82,6 +85,14 @@ export class RootFileEditorProvider
       webviewPanel.webview,
       document.uri
     );
+
+    // let fd = fs.openSync(document.uri, 'r'), size = -1;
+    // if (fd) {
+    //   let stats = fs.statSync(document.uri);
+    //   size = stats.size;
+    // }
+
+    webviewPanel.webview.postMessage({ info: "Say hello size = " + size });
   }
 
   private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
@@ -141,6 +152,12 @@ export class RootFileEditorProvider
             }
 
             h.openRootFile("${fileUri}");
+          });
+
+          // Handle the message inside the webview
+          window.addEventListener('message', event => {
+            const message = event.data; // The JSON data our extension sent
+            console.log('got message', message?.info);
           });
         </script>
       </body>

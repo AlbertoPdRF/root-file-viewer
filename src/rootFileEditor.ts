@@ -108,6 +108,12 @@ export class RootFileEditorProvider
             case 'alert':
                vscode.window.showErrorMessage(message.text);
                return;
+            case 'save':
+               // let fs = require('fs');       // this is native "fs" module
+               // let atob = require('atob');   // this should be "atob" module
+               // fs.writeFileSync(message.filename, atob(message.content)); // save binary file
+               vscode.window.showInformationMessage(`Want to save file ${message.filename} base64 content ${message.content.length}`);
+               return;
             case 'read': {
                let buffer = new ArrayBuffer(message.sz);
                let view = new DataView(buffer, 0, message.sz);
@@ -238,6 +244,14 @@ export class RootFileEditorProvider
              text: 'test message for alert command'
           });
 
+          JSROOT.setSaveFile((filename, content) => {
+             // here binary content
+             vscode.postMessage({
+                command: 'save',
+                filename,
+                content: window.btoa(content)
+             });
+          });
 
         </script>
       </body>

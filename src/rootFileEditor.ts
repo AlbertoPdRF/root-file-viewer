@@ -86,13 +86,26 @@ export class RootFileEditorProvider
       document.uri
     );
 
-    // let fd = fs.openSync(document.uri, 'r'), size = -1;
+    let size = 0;
+
+    // let fs = require('fs');
+    // let fd = fs.openSync(document.uri, 'r');
     // if (fd) {
-    //   let stats = fs.statSync(document.uri);
-    //   size = stats.size;
+    // let stats = fs.statSync(document.uri);
+    //  size = stats.size;
     // }
 
     webviewPanel.webview.postMessage({ info: "Say hello size = " + size });
+
+    webviewPanel.webview.onDidReceiveMessage(
+        message => {
+          switch (message.command) {
+            case 'alert':
+              vscode.window.showErrorMessage(message.text);
+              return;
+          }
+        }
+    );
   }
 
   private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
@@ -158,6 +171,12 @@ export class RootFileEditorProvider
           window.addEventListener('message', event => {
             const message = event.data; // The JSON data our extension sent
             console.log('got message', message?.info);
+          });
+
+          const vscode = acquireVsCodeApi();
+          vscode.postMessage({
+             command: 'alert',
+             text: 'test message for alert command'
           });
         </script>
       </body>

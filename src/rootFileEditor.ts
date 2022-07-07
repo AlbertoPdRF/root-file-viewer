@@ -81,15 +81,16 @@ export class RootFileEditorProvider
       localResourceRoots: [this._context.extensionUri, documentRoot],
     };
 
-    let filesize = 0, filename = "file.root";
 
-    // let btoa = require('btoa');   // this should be "btoa" module
-    // let fs = require('fs');       // this is native "fs" module
-    // let fd = fs.openSync(filename, 'r');
-    // if (fd) {
-    // let stats = fs.statSync(filename.uri);
-    //  filesize = stats.size;
-    // }
+    const fileUri = webviewPanel.webview.asWebviewUri(document.uri);
+
+    let btoa = require('btoa');   // this is "btoa" module
+    let atob = require('atob');   // this is "atob" module
+    let fs = require('fs');       // this is native "fs" module
+
+    let filename = fileUri?.path;
+    let filesize = fs.statSync(filename).size;
+    let fd = fs.openSync(filename, 'r');
 
     webviewPanel.webview.html = this.getHtmlForWebview(
       webviewPanel.webview,
@@ -97,7 +98,6 @@ export class RootFileEditorProvider
       filename,
       filesize
     );
-
 
     webviewPanel.webview.postMessage({ info: "Say hello size = " + filesize });
 
@@ -109,9 +109,7 @@ export class RootFileEditorProvider
                vscode.window.showErrorMessage(message.text);
                return;
             case 'save':
-               // let fs = require('fs');       // this is native "fs" module
-               // let atob = require('atob');   // this should be "atob" module
-               // fs.writeFileSync(message.filename, atob(message.content)); // save binary file
+               fs.writeFileSync(message.filename, atob(message.content)); // save binary file
                vscode.window.showInformationMessage(`Want to save file ${message.filename} base64 content ${message.content.length}`);
                return;
             case 'read': {
@@ -123,11 +121,10 @@ export class RootFileEditorProvider
                   binStr += String.fromCharCode(view.getUint8(i));
                webviewPanel.webview.postMessage({
                    id: message.id,
-                   data: btoa(binStr)
+                   read: btoa(binStr)
                 });
                return;
             }
-
           }
         }
     );
@@ -154,6 +151,7 @@ export class RootFileEditorProvider
     const darkMode = configuration.get("darkMode");
     const layout = configuration.get("layout");
     const palette = configuration.get("palette");
+
 
     return /* html */ `
       <!DOCTYPE html>
@@ -185,12 +183,15 @@ export class RootFileEditorProvider
                super();
             }
 
+            openFile() { return Promise.resolve(true); }
+
             getFileName() { return "${filename}"; }
 
             getFileSize() { return ${filesize}; }
 
             readBuffer(pos, sz)
             {
+               console.log('readByffer', pos, sz);
                return new Promise(resolve => {
                   requests[++id] = resolve;
                   vscode.postMessage({
@@ -214,9 +215,11 @@ export class RootFileEditorProvider
             if (titleParagraph)
               titleParagraph.remove();
 
-            h.openRootFile("${fileUri}");
+            // open file using URI
+            // h.openRootFile("${fileUri}");
 
-            // instead should be h.openRootFile(new WebViewProxy);
+            // open file using proxy
+            h.openRootFile(new WebViewProxy);
           });
 
           // Handle the message inside the webview

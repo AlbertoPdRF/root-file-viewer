@@ -84,8 +84,6 @@ export class RootFileEditorProvider
 
     const fileUri = webviewPanel.webview.asWebviewUri(document.uri);
 
-    let btoa = require('btoa');   // this is "btoa" module
-    let atob = require('atob');   // this is "atob" module
     let fs = require('fs');       // this is native "fs" module
 
     let filename = fileUri?.path;
@@ -109,19 +107,19 @@ export class RootFileEditorProvider
                vscode.window.showErrorMessage(message.text);
                return;
             case 'save':
-               fs.writeFileSync(message.filename, atob(message.content)); // save binary file
-               vscode.window.showInformationMessage(`Want to save file ${message.filename} base64 content ${message.content.length}`);
+               fs.writeFileSync(message.filename, Buffer.from(message.content, 'base64')); // save binary file
+               vscode.window.showInformationMessage(`Saving file ${message.filename} base64 len ${message.content.length}`);
                return;
             case 'read': {
                let buffer = new ArrayBuffer(message.sz);
                let view = new DataView(buffer, 0, message.sz);
-               let bytesRead = fs.readSync(fd, view, 0, message.sz, message.pos);
-               let binStr = "";
-               for (let i = 0; i < message.sz; ++i)
-                  binStr += String.fromCharCode(view.getUint8(i));
+               /* let bytesRead = */ fs.readSync(fd, view, 0, message.sz, message.pos);
+               //let binStr = "";
+               //for (let i = 0; i < message.sz; ++i)
+               //   binStr += String.fromCharCode(view.getUint8(i));
                webviewPanel.webview.postMessage({
                    id: message.id,
-                   read: btoa(binStr)
+                   read: Buffer.from(buffer).toString('base64')
                 });
                return;
             }

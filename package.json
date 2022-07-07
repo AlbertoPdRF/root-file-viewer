@@ -114,7 +114,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "jsroot": "file:../jsroot"
+    "jsroot": "root-project/jsroot#master"
   },
   "bugs": {
     "url": "https://github.com/albertopdrf/root-file-viewer/issues"

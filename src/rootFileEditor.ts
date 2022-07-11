@@ -146,8 +146,8 @@ export class RootFileEditorProvider
     const fileUri = webview.asWebviewUri(file);
 
     const configuration = vscode.workspace.getConfiguration("rootFileViewer");
-    const darkMode = configuration.get("darkMode");
-    const layout = configuration.get("layout");
+    const darkMode = true; // configuration.get("darkMode");
+    const layout = "tabs"; // configuration.get("layout");
     const palette = configuration.get("palette");
 
 
@@ -189,7 +189,6 @@ export class RootFileEditorProvider
 
             readBuffer(pos, sz)
             {
-               console.log('readByffer', pos, sz);
                return new Promise(resolve => {
                   requests[++id] = resolve;
                   vscode.postMessage({

@@ -2,6 +2,9 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { Disposable } from "./dispose";
 
+// import * as fs from "fs";
+
+
 class RootFileDocument extends Disposable implements vscode.CustomDocument {
   static async create(
     uri: vscode.Uri
@@ -78,13 +81,54 @@ export class RootFileEditorProvider
       localResourceRoots: [this._context.extensionUri, documentRoot],
     };
 
+
+    const fileUri = webviewPanel.webview.asWebviewUri(document.uri);
+
+    let fs = require('fs');       // this is native "fs" module
+
+    let filename = fileUri?.path;
+    let filesize = fs.statSync(filename).size;
+    let fd = fs.openSync(filename, 'r');
+
     webviewPanel.webview.html = this.getHtmlForWebview(
       webviewPanel.webview,
-      document.uri
+      document.uri,
+      filename,
+      filesize
+    );
+
+    webviewPanel.webview.postMessage({ info: "Say hello size = " + filesize });
+
+    // handle message inside Code
+    webviewPanel.webview.onDidReceiveMessage(
+        message => {
+          switch (message.command) {
+            case 'alert':
+               vscode.window.showErrorMessage(message.text);
+               return;
+            case 'save':
+               fs.writeFileSync(message.filename, Buffer.from(message.content, 'base64')); // save binary file
+               vscode.window.showInformationMessage(`Saving file ${message.filename} base64 len ${message.content.length}`);
+               return;
+            case 'read': {
+               let buffer = new ArrayBuffer(message.sz);
+               let view = new DataView(buffer, 0, message.sz);
+               /* let bytesRead = */ fs.readSync(fd, view, 0, message.sz, message.pos);
+               //let binStr = "";
+               //for (let i = 0; i < message.sz; ++i)
+               //   binStr += String.fromCharCode(view.getUint8(i));
+               webviewPanel.webview.postMessage({
+                   id: message.id,
+                   read: Buffer.from(buffer).toString('base64')
+                });
+               return;
+            }
+          }
+        }
     );
   }
 
-  private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
+  private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri, filename: string, filesize: Number): string {
     const styleResetUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._context.extensionUri, "media", "reset.css")
     );
@@ -102,9 +146,10 @@ export class RootFileEditorProvider
     const fileUri = webview.asWebviewUri(file);
 
     const configuration = vscode.workspace.getConfiguration("rootFileViewer");
-    const darkMode = configuration.get("darkMode");
-    const layout = configuration.get("layout");
+    const darkMode = true; // configuration.get("darkMode");
+    const layout = "tabs"; // configuration.get("layout");
     const palette = configuration.get("palette");
+
 
     return /* html */ `
       <!DOCTYPE html>
@@ -126,6 +171,34 @@ export class RootFileEditorProvider
         <div id="hierarchy"></div>
 
         <script>
+          const vscode = acquireVsCodeApi(),
+                requests = {}; // list of requests
+
+          let id = 0;
+
+          class WebViewProxy extends JSROOT.FileProxy {
+             constructor() {
+               super();
+            }
+
+            openFile() { return Promise.resolve(true); }
+
+            getFileName() { return "${filename}"; }
+
+            getFileSize() { return ${filesize}; }
+
+            readBuffer(pos, sz)
+            {
+               return new Promise(resolve => {
+                  requests[++id] = resolve;
+                  vscode.postMessage({
+                     command: 'read',
+                     pos, sz, id
+                  });
+               });
+            }
+          }
+
           const settings = JSROOT.settings;
           settings.DarkMode = ${darkMode};
           settings.Palette = ${palette};
@@ -136,12 +209,50 @@ export class RootFileEditorProvider
           h.prepareGuiDiv("hierarchy", "${layout}");
           h.createBrowser("browser").then(() => {
             const titleParagraph = document.querySelector(".jsroot_browser_title");
-            if (titleParagraph) {
+            if (titleParagraph)
               titleParagraph.remove();
-            }
 
-            h.openRootFile("${fileUri}");
+            // open file using URI
+            // h.openRootFile("${fileUri}");
+
+            // open file using proxy
+            h.openRootFile(new WebViewProxy);
           });
+
+          // Handle the message inside the webview
+          window.addEventListener('message', event => {
+            const message = event.data; // The JSON data our extension sent
+            if (message?.read && message?.id) {
+               let resolve = requests[message.id];
+               delete requests[message.id];
+
+               if (resolve) {
+                  let blobStr = atob(message.read); // convert to binary string
+                  let buffer = new ArrayBuffer(blobStr.length);
+                  let view = new DataView(buffer, 0, blobStr.length);
+                  for (let i = 0; i < blobStr.length; ++i)
+                     view.setUint8(i, blobStr.charCodeAt(i));
+                  resolve(view);
+               }
+
+            } else if (message?.info)
+               console.log('got message', message?.info);
+          });
+
+          vscode.postMessage({
+             command: 'alert',
+             text: 'test message for alert command'
+          });
+
+          JSROOT.setSaveFile((filename, content) => {
+             // here binary content
+             vscode.postMessage({
+                command: 'save',
+                filename,
+                content: window.btoa(content)
+             });
+          });
+
         </script>
       </body>
       </html>`;

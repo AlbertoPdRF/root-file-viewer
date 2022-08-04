@@ -59,7 +59,7 @@
         },
         "rootFileViewer.layout": {
           "type": "string",
-          "default": "flex",
+          "default": "tabs",
           "enum": [
             "flex",
             "grid 2x2",
@@ -70,6 +70,7 @@
             "horiz2",
             "horiz32",
             "simple",
+            "tabs",
             "vert2",
             "vert3",
             "vert231"

@@ -1,4 +1,3 @@
-import * as path from "path";
 import * as vscode from "vscode";
 import { Disposable } from "./dispose";
 
@@ -82,6 +81,20 @@ export class RootFileEditorProvider
       webviewPanel.webview,
       document.uri
     );
+
+    webviewPanel.webview.onDidReceiveMessage((message) => {
+      switch (message.type) {
+        case "save": {
+          const fileUri = vscode.Uri.joinPath(documentRoot, message.filename);
+          vscode.workspace.fs.writeFile(
+            fileUri,
+            Buffer.from(message.content, "base64")
+          );
+          vscode.window.showInformationMessage(`Saving file ${fileUri.path}.`);
+          return;
+        }
+      }
+    });
   }
 
   private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
@@ -126,6 +139,8 @@ export class RootFileEditorProvider
         <div id="hierarchy"></div>
 
         <script>
+          const vscode = acquireVsCodeApi();
+
           const settings = JSROOT.settings;
           settings.DarkMode = ${darkMode};
           settings.Palette = ${palette};
@@ -141,6 +156,14 @@ export class RootFileEditorProvider
             }
 
             h.openRootFile("${fileUri}");
+          });
+
+          JSROOT.setSaveFile((filename, content) => {
+            vscode.postMessage({
+              type: "save",
+              filename,
+              content: window.btoa(content),
+            });
           });
         </script>
       </body>

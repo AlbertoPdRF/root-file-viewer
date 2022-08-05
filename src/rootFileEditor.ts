@@ -107,6 +107,9 @@ export class RootFileEditorProvider
     const styleMainUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._context.extensionUri, "media", "rootFile.css")
     );
+    const scriptUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._context.extensionUri, "media", "rootFile.js")
+    );
 
     const jsrootUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._context.extensionUri, "dist", "jsroot.js")
@@ -138,34 +141,14 @@ export class RootFileEditorProvider
       <body>
         <div id="hierarchy"></div>
 
-        <script>
-          const vscode = acquireVsCodeApi();
-
-          const settings = JSROOT.settings;
-          settings.DarkMode = ${darkMode};
-          settings.Palette = ${palette};
-
-          const h = new JSROOT.HierarchyPainter("ROOT File Hierarchy");
-          h.no_select = true;
-          h.show_overflow = true;
-          h.prepareGuiDiv("hierarchy", "${layout}");
-          h.createBrowser("browser").then(() => {
-            const titleParagraph = document.querySelector(".jsroot_browser_title");
-            if (titleParagraph) {
-              titleParagraph.remove();
-            }
-
-            h.openRootFile("${fileUri}");
-          });
-
-          JSROOT.setSaveFile((filename, content) => {
-            vscode.postMessage({
-              type: "save",
-              filename,
-              content: window.btoa(content),
-            });
-          });
-        </script>
+        <script
+          id="script"
+          data-dark-mode="${darkMode}"
+          data-layout="${layout}"
+          data-palette="${palette}"
+          data-file-uri="${fileUri}"
+          src="${scriptUri}"
+        ></script>
       </body>
       </html>`;
   }

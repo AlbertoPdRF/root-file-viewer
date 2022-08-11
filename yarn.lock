@@ -2251,9 +2251,10 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
-"jsroot@github:root-project/jsroot#master":
-  version "7.1.99"
-  resolved "https://codeload.github.com/root-project/jsroot/tar.gz/1e690adc914c75f912094453e422f86f0493cf85"
+jsroot@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.2.0.tgz#c317ed4898c39182b5229eeb2ba89dfce0f215c8"
+  integrity sha512-kFaoNQqOYQ7KYyubCIMCvD0XKrwCgoOqnNehDTcMKatvYG94nue7voDlpCl17tAZAgH1CSaYGcyd+m/SLx+OPQ==
   dependencies:
     canvas "^2.9.3"
     gl "^5.0.3"

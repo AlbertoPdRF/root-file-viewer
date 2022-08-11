@@ -107,7 +107,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "eslint": "^7.19.0",
     "glob": "^7.1.6",
-    "jsroot": "github:root-project/jsroot#master",
+    "jsroot": "^7.2.0",
     "mocha": "^8.2.1",
     "ts-loader": "^9.3.1",
     "typescript": "^4.1.3",

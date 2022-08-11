@@ -9,6 +9,7 @@ class RootFileDocument extends Disposable implements vscode.CustomDocument {
   }
 
   private readonly _uri: vscode.Uri;
+  private _size: Number = 0;
 
   private constructor(uri: vscode.Uri) {
     super();
@@ -17,6 +18,21 @@ class RootFileDocument extends Disposable implements vscode.CustomDocument {
 
   public get uri() {
     return this._uri;
+  }
+
+  public get size() {
+    return this._size;
+  }
+
+  async init() {
+    const metadata = await vscode.workspace.fs.stat(this._uri);
+    this._size = metadata.size;
+  }
+
+  async read(position: Number, size: Number): Promise<Uint8Array> {
+    // position and size must be used when the fsChunks API is finalized.
+    // Maybe move this directly to where the message from the webview is received.
+    return new Uint8Array(await vscode.workspace.fs.readFile(this._uri));
   }
 
   private readonly _onDidDispose = this._register(
@@ -59,6 +75,7 @@ export class RootFileEditorProvider
     _token: vscode.CancellationToken
   ): Promise<RootFileDocument> {
     const document: RootFileDocument = await RootFileDocument.create(uri);
+    await document.init();
     return document;
   }
 
@@ -79,11 +96,20 @@ export class RootFileEditorProvider
 
     webviewPanel.webview.html = this.getHtmlForWebview(
       webviewPanel.webview,
-      document.uri
+      document
     );
 
     webviewPanel.webview.onDidReceiveMessage((message) => {
       switch (message.type) {
+        case "read": {
+          document.read(message.pos, message.sz).then((data) =>
+            webviewPanel.webview.postMessage({
+              id: message.id,
+              read: Buffer.from(data).toString("base64"),
+            })
+          );
+          return;
+        }
         case "save": {
           const fileUri = vscode.Uri.joinPath(documentRoot, message.filename);
           vscode.workspace.fs.writeFile(
@@ -97,7 +123,10 @@ export class RootFileEditorProvider
     });
   }
 
-  private getHtmlForWebview(webview: vscode.Webview, file: vscode.Uri): string {
+  private getHtmlForWebview(
+    webview: vscode.Webview,
+    file: RootFileDocument
+  ): string {
     const styleResetUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._context.extensionUri, "media", "reset.css")
     );
@@ -115,12 +144,13 @@ export class RootFileEditorProvider
       vscode.Uri.joinPath(this._context.extensionUri, "dist", "jsroot.js")
     );
 
-    const fileUri = webview.asWebviewUri(file);
-
     const configuration = vscode.workspace.getConfiguration("rootFileViewer");
     const darkMode = configuration.get("darkMode");
     const layout = configuration.get("layout");
     const palette = configuration.get("palette");
+
+    const fileUri = webview.asWebviewUri(file.uri);
+    const fileSize = file.size;
 
     return /* html */ `
       <!DOCTYPE html>
@@ -147,6 +177,7 @@ export class RootFileEditorProvider
           data-layout="${layout}"
           data-palette="${palette}"
           data-file-uri="${fileUri}"
+          data-file-size="${fileSize}"
           src="${scriptUri}"
         ></script>
       </body>

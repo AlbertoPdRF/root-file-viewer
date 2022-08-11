@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.0.0] - 2022-08-11
+
+### Added
+
+- Upgraded `JSROOT` to `v7.2.0`. This made the following changes possible:
+  - The `tabs` layout is back! ([#17](https://github.com/AlbertoPdRF/root-file-viewer/issues/17))
+  - Added support for the `Create PNG` functionality ([#13](https://github.com/AlbertoPdRF/root-file-viewer/issues/13))
+- Re-organized the code, making it more clean and easier to maintain
+
 ## [0.8.0] - 2022-07-01
 
 ### Added

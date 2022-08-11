@@ -12,7 +12,6 @@
   h.no_select = true;
   h.show_overflow = true;
   h.prepareGuiDiv("hierarchy", dataset.layout);
-  console.log(dataset.layout);
   h.createBrowser("browser").then(() => {
     const titleParagraph = document.querySelector(".jsroot_browser_title");
     if (titleParagraph) {

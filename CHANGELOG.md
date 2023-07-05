@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Upgraded `JSROOT` to [`v7.4.0`](https://github.com/root-project/jsroot/releases/tag/6.3.4).
+
 ## [1.0.0] - 2022-08-11
 
 ### Added

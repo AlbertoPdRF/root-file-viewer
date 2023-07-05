@@ -22,3 +22,9 @@ body {
 .jsroot_draw_area {
   background-color: var(--vscode-editor-background)!important;
 }
+
+.jsroot_tabs_label {
+  border: none!important;
+  color: var(--vscode-button-background)!important;
+  cursor: pointer!important;
+}

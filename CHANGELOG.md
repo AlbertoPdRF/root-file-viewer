@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Upgraded `JSROOT` to [`v7.4.0`](https://github.com/root-project/jsroot/releases/tag/6.3.4).
 
+### Fixed
+
+- Fixed some UI issues (see [#3 (comment)](https://github.com/AlbertoPdRF/root-file-viewer/issues/3#issuecomment-1230084310) and [(another) #3 comment](https://github.com/AlbertoPdRF/root-file-viewer/issues/3#issuecomment-1230103522)).
+
 ## [1.0.0] - 2022-08-11
 
 ### Added

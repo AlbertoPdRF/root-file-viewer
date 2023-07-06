@@ -2259,9 +2259,9 @@ json-stable-stringify-without-jsonify@^1.0.1:
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
 jsroot@^7.2.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.4.0.tgz#b09ef578e447954c2f03876dce099d20819659cc"
-  integrity sha512-5x95cGMRsQzffuFjnlFPMQBo7tM6JXtiCEBDqE/zDwnUp10ABAJ6twWNsenUxIfTrtoGp4qZWkBrwhWPXbt4yQ==
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.4.1.tgz#7757679a54aafede68574f134a1c0ef42bb0fecb"
+  integrity sha512-8oo2szEBhTB1W3DUGpm+GPIOJYDw7M5wovqUe3MuXMsNidTyQw1h6WOSfY2XSNC4OoUoBKcTVO71VHd2cq9aoQ==
   dependencies:
     canvas "^2.11.2"
     gl "^6.0.2"
@@ -4016,6 +4016,7 @@ workerpool@6.1.0:
   integrity sha512-toV7q9rWNYha963Pl/qyeZ6wG+3nnsyvolaNUS8+R5Wtw6qJPTxIlOP1ZSvcGhEJw+l3HMMmtiNo9Gl61G4GVg==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==

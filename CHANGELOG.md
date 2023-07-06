@@ -8,7 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- Upgraded `JSROOT` to [`v7.4.0`](https://github.com/root-project/jsroot/releases/tag/6.3.4).
+- Upgraded `JSROOT` to [`v7.4.1`]. Relevant changes:
+  - [`v7.2.1` changes](https://github.com/root-project/jsroot/releases/tag/7.2.1).
+  - [`v7.3.0` changes](https://github.com/root-project/jsroot/releases/tag/7.3.0).
+  - [`v7.3.1` changes](https://github.com/root-project/jsroot/releases/tag/7.3.1).
+  - [`v7.3.2` changes](https://github.com/root-project/jsroot/releases/tag/7.3.2).
+  - [`v7.3.4` changes](https://github.com/root-project/jsroot/releases/tag/7.3.4).
+  - [`v7.4.0` changes](https://github.com/root-project/jsroot/releases/tag/7.4.0).
+  - [`v7.4.1` changes](https://github.com/root-project/jsroot/releases/tag/7.4.1):
+    - With this version, two histograms can be drawn on the same canvas by dragging and dropping! ([#24](https://github.com/AlbertoPdRF/root-file-viewer/issues/24))
 
 ### Fixed
 

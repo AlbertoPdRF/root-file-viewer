@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.1.1] - 2023-08-22
+
 ### Changed
 
 - Upgraded `JSROOT` to [`v7.4.2`](https://github.com/root-project/jsroot/releases/tag/7.4.2). This addresses some drawing issues ([#25](https://github.com/AlbertoPdRF/root-file-viewer/issues/25) and [#26](https://github.com/AlbertoPdRF/root-file-viewer/issues/26)).

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.2.1] - 2023-10-18
+
 ### Changed
 
 - Upgraded `JSROOT` to `v7.5.1`. This fixes issue [#27](https://github.com/AlbertoPdRF/root-file-viewer/issues/27). The rest of changes of this update can be seen here: [`v7.5.1` changes](https://github.com/root-project/jsroot/releases/tag/7.5.1).

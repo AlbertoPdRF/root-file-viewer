@@ -2,7 +2,7 @@
   "name": "root-file-viewer",
   "displayName": "ROOT File Viewer",
   "description": "View ROOT files directly in VS Code!",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "publisher": "albertopdrf",
   "engines": {
     "vscode": "^1.64.0"

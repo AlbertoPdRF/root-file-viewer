@@ -1974,9 +1974,9 @@ json-stable-stringify-without-jsonify@^1.0.1:
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
 jsroot@^7.2.0:
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.5.0.tgz#9382a601b1bab4d8c5d7e51ad987686fcadaaac0"
-  integrity sha512-oGB09H1azqru9NrtRn5QE2qdpbO7Z0v4N+LGI7gxFVtQG/S8QwAhDNS+AvwpO4iSvng1JvDNQHHRJjJ6wIpwKQ==
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.5.1.tgz#50e486ac99b5e7bde88d820c0a5a53c220ef363e"
+  integrity sha512-/yh7zYQO32lmmF5uJC8y1ZY0qMrWHN0zdZ7FYG7iTkBLS5J61vtJ7JAa3b0670mUZoQMThkXIfisN5tsrV4dSw==
   dependencies:
     canvas "^2.11.2"
     jsdom "^22.1.0"

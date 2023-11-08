@@ -1974,9 +1974,9 @@ json-stable-stringify-without-jsonify@^1.0.1:
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
 jsroot@^7.2.0:
-  version "7.5.1"
-  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.5.1.tgz#50e486ac99b5e7bde88d820c0a5a53c220ef363e"
-  integrity sha512-/yh7zYQO32lmmF5uJC8y1ZY0qMrWHN0zdZ7FYG7iTkBLS5J61vtJ7JAa3b0670mUZoQMThkXIfisN5tsrV4dSw==
+  version "7.5.2"
+  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.5.2.tgz#49921304daf4bb8a78422aad2d6d1885f3a6079c"
+  integrity sha512-7IbcnDGzZvei8JWP/HHwwtVWhnRo/KP0Ui+WscQi7XAO664lkvFXE7CjghwQXc50yGskn58WLted7bY8O8Ys8w==
   dependencies:
     canvas "^2.11.2"
     jsdom "^22.1.0"
@@ -2575,9 +2575,9 @@ punycode@^2.1.0:
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
 punycode@^2.1.1, punycode@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
-  integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
+  integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
 querystringify@^2.1.1:
   version "2.2.0"

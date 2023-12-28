@@ -1974,9 +1974,9 @@ json-stable-stringify-without-jsonify@^1.0.1:
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
 jsroot@^7.2.0:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.5.2.tgz#49921304daf4bb8a78422aad2d6d1885f3a6079c"
-  integrity sha512-7IbcnDGzZvei8JWP/HHwwtVWhnRo/KP0Ui+WscQi7XAO664lkvFXE7CjghwQXc50yGskn58WLted7bY8O8Ys8w==
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.5.3.tgz#3bc00259358db4ad7c68d94c61816bbcd6e73717"
+  integrity sha512-yFemW92gqQiZg9z5+38aaERVgQjD69TsNrmibrvifb8xBVWlTTTKklzqKrBSF+k68Xpp3Q8/Q6XUWPy1BvZs0A==
   dependencies:
     canvas "^2.11.2"
     jsdom "^22.1.0"
@@ -3409,9 +3409,9 @@ wrappy@1:
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
 ws@^8.13.0:
-  version "8.14.2"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.14.2.tgz#6c249a806eb2db7a20d26d51e7709eab7b2e6c7f"
-  integrity sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==
+  version "8.16.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.16.0.tgz#d1cd774f36fbc07165066a60e40323eab6446fd4"
+  integrity sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==
 
 xhr2@^0.2.1:
   version "0.2.1"

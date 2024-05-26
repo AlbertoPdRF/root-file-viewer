@@ -5,7 +5,7 @@
   "version": "1.2.4",
   "publisher": "albertopdrf",
   "engines": {
-    "vscode": "^1.64.0"
+    "vscode": "^1.75.0"
   },
   "license": "MIT",
   "categories": [
@@ -16,9 +16,6 @@
     "color": "#346295",
     "theme": "dark"
   },
-  "activationEvents": [
-    "onCustomEditor:rootFileViewer.rootFile"
-  ],
   "main": "./dist/extension.js",
   "browser": "./dist/web/extension.js",
   "contributes": {

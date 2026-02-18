@@ -808,9 +808,9 @@ caniuse-lite@^1.0.30001370:
   integrity sha512-mWvzatRx3w+j5wx/mpFN5v5twlPrabG8NqX2c6e45LCpymdoGqNvRkRutFUqpRTXKFQFNQJasvK0YT7suW6/Hw==
 
 canvas@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/canvas/-/canvas-3.2.0.tgz#877c51aabdb99cbb5b2b378138a6cdd681e9d390"
-  integrity sha512-jk0GxrLtUEmW/TmFsk2WghvgHe8B0pxGilqCL21y8lHkPUGa6FTsnCNtHPOzT8O3y+N+m3espawV80bbBlgfTA==
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/canvas/-/canvas-3.2.1.tgz#8f0390569f36b94bffba9c0e7aed6948875aec7b"
+  integrity sha512-ej1sPFR5+0YWtaVp6S1N1FVz69TQCqmrkGeRvQxZeAB1nAIcjNTHVwrZtYtWFFBmQsF40/uDLehsW5KuYC99mg==
   dependencies:
     node-addon-api "^7.0.0"
     prebuild-install "^7.1.3"
@@ -1977,9 +1977,9 @@ json-stable-stringify-without-jsonify@^1.0.1:
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
 jsroot@^7.2.0:
-  version "7.10.0"
-  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.10.0.tgz#61c3754caa423b66a052180155cde7e03cb9eb50"
-  integrity sha512-Z0jsHoENAeob+xWo7dQ/Cl36e+cTnVBgLOoTogktc39zCpldYPKiG8EkIt4Y385YWUJo3/zJPEW0PFyzIba14w==
+  version "7.10.2"
+  resolved "https://registry.yarnpkg.com/jsroot/-/jsroot-7.10.2.tgz#8a321bd8aade28144f88328daa136401b4499333"
+  integrity sha512-1gxOEn8Gpf3OnDH8lCw58R9sXOqGvqhT/DICaAAFHKYV+OCp3LCGf81PL+kXf7ysgON+fGZpyin2lTmccju69Q==
   dependencies:
     "@oneidentity/zstd-js" "^1.0.3"
     canvas "^3.2.0"
@@ -2312,9 +2312,9 @@ neo-async@^2.6.2:
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
 node-abi@^3.3.0:
-  version "3.80.0"
-  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.80.0.tgz#d7390951f27caa129cceeec01e1c20fc9f07581c"
-  integrity sha512-LyPuZJcI9HVwzXK1GPxWNzrr+vr8Hp/3UqlmWxxh8p54U1ZbclOqbSog9lWHaCX+dBaiGi6n/hIX+mKu74GmPA==
+  version "3.87.0"
+  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.87.0.tgz#423e28fea5c2f195fddd98acded9938c001ae6dd"
+  integrity sha512-+CGM1L1CgmtheLcBuleyYOn7NWPVu0s0EJH2C4puxgEZb9h8QpR9G2dBfZJOAUhi7VQxuBPMd0hiISWcTyiYyQ==
   dependencies:
     semver "^7.3.5"
 
@@ -2334,9 +2334,9 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
 nwsapi@^2.2.16:
-  version "2.2.22"
-  resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.22.tgz#109f9530cda6c156d6a713cdf5939e9f0de98b9d"
-  integrity sha512-ujSMe1OWVn55euT1ihwCI1ZcAaAU3nxUiDwfDQldc51ZXaB9m2AyOn6/jh1BLe2t/G8xd6uKG1UBF2aZJeg2SQ==
+  version "2.2.23"
+  resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.23.tgz#59712c3a88e6de2bb0b6ccc1070397267019cf6c"
+  integrity sha512-7wfH4sLbt4M0gCDzGE6vzQBo0bfTKjU7Sfpqy/7gs1qBfYz2vEJH6vXcBKpO3+6Yu1telwd0t9HpyOoLEQQbIQ==
 
 object-assign@^4.0.1:
   version "4.1.1"
@@ -2769,9 +2769,9 @@ semver@^7.2.1, semver@^7.3.4:
     lru-cache "^6.0.0"
 
 semver@^7.3.5:
-  version "7.7.3"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.3.tgz#4b5f4143d007633a8dc671cd0a6ef9147b8bb946"
-  integrity sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==
+  version "7.7.4"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.4.tgz#28464e36060e991fa7a11d0279d2d3f3b57a7e8a"
+  integrity sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==
 
 serialize-javascript@5.0.1:
   version "5.0.1"
@@ -3382,9 +3382,9 @@ wrappy@1:
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
 ws@^8.18.0:
-  version "8.18.3"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.18.3.tgz#b56b88abffde62791c639170400c93dcb0c95472"
-  integrity sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==
+  version "8.19.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.19.0.tgz#ddc2bdfa5b9ad860204f5a72a4863a8895fd8c8b"
+  integrity sha512-blAT2mjOEIi0ZzruJfIhb3nps74PRWTCz1IjglWEEpQl5XS/UNama6u2/rjFkDDouqr4L67ry+1aGIALViWjDg==
 
 xhr2@^0.2.1:
   version "0.2.1"

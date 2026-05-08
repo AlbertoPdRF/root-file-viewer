@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+- Upgraded `JSROOT` to `v7.11.0`. The relevant changes of this update can be seen here:
+  - [`v7.10.3` changes](https://github.com/root-project/jsroot/releases/tag/7.10.3).
+  - [`v7.11.0` changes](https://github.com/root-project/jsroot/releases/tag/7.11.0).
+
 ## [1.6.1] - 2026-02-18
 
 ### Changed

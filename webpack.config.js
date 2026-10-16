@@ -52,7 +52,10 @@ const config = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: "./node_modules/jsroot/build/jsroot.js", to: "" }
+        { from: "./node_modules/jsroot/build/jsroot.js", to: "" },
+        // JSROOT's bundle lazy-loads these from ./base/ (see `ignore_jsroot_modules` in jsroot/build/rollup.config.js)
+        { from: "./node_modules/jsroot/modules/base/zstd.mjs", to: "base/" },
+        { from: "./node_modules/jsroot/modules/base/lzma.mjs", to: "base/" }
       ],
     })
   ],

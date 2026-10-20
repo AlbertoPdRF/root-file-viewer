@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Files compressed with ZSTD (the default for RNTuple) or LZMA can be opened again: JSROOT's decompression modules are now included in the extension. Fixes [#47](https://github.com/AlbertoPdRF/root-file-viewer/issues/47).
 
+### Changed
+
+- Upgraded `JSROOT` to `v7.11.2`. The relevant changes of this update can be seen here:
+  - [`v7.11.1` changes](https://github.com/root-project/jsroot/releases/tag/7.11.1).
+  - [`v7.11.2` changes](https://github.com/root-project/jsroot/releases/tag/7.11.2).
+
 ## [1.7.0] - 2026-05-08
 
 - Upgraded `JSROOT` to `v7.11.0`. The relevant changes of this update can be seen here:
